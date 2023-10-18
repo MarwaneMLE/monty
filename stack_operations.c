@@ -30,11 +30,11 @@ void mod_nodes(stack_t **stack, unsigned int line_number)
 
 	/* Check if the stack exists, is not empty, and has at least two elements */
 	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
-		more_err(8, line_number, "mod");
+		more_error(8, line_number, "mod");
 
 	/* Check if the divisor is zero */
 	if ((*stack)->n == 0)
-		more_err(9, line_number);
+		more_error(9, line_number);
 
 	/* Move the stack pointer to the next element and calculate the remainder */
 	(*stack) = (*stack)->next;

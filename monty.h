@@ -2,7 +2,7 @@
 #define MONTY_H
 
 #define _GNU_SOURCE
-#define < stdio.h >
+#include <stdio.h>
 #include <unistd.h>
 #include <string.h>
 #include <stdlib.h>

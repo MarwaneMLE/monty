@@ -9,7 +9,7 @@ void open_file(char *file_name)
 FILE *fd = fopen(file_name, "r");
 
 if (file_name == NULL || fd == NULL)
-err(2, file_name);
+error(2, file_name);
 
 read_file(fd);
 fclose(fd);
@@ -45,7 +45,7 @@ char *opcode, *value;
 const char *delim = "\n ";
 
 if (buffer == NULL)
-err(4);
+error(4);
 
 opcode = strtok(buffer, delim);
 if (opcode == NULL)
@@ -57,7 +57,7 @@ return (0);
 if (strcmp(opcode, "queue") == 0)
 return (1);
 
-find_func(opcode, value, line_number, format);
+find_function(opcode, value, line_number, format);
 return (format);
 }
 
@@ -99,12 +99,12 @@ for (flag = 1, i = 0; func_list[i].opcode != NULL; i++)
 {
 if (strcmp(opcode, func_list[i].opcode) == 0)
 {
-call_fun(func_list[i].f, opcode, value, ln, format);
+call_function(func_list[i].f, opcode, value, ln, format);
 flag = 0;
 }
 }
 if (flag == 1)
-err(3, ln, opcode);
+error(3, ln, opcode);
 }
 
 /**
@@ -130,11 +130,11 @@ val = val + 1;
 flag = -1;
 }
 if (val == NULL)
-err(5, ln);
+error(5, ln);
 for (i = 0; val[i] != '\0'; i++)
 {
 if (isdigit(val[i]) == 0)
-err(5, ln);
+error(5, ln);
 }
 node = create_node(atoi(val) * flag);
 if (format == 0)
