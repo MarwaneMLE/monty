@@ -8,6 +8,7 @@
 void mul_nodes(stack_t **stack, unsigned int line_number)
 {
 	int product;
+	(void) line_number;
 
 	/* Check if the stack exists, is not empty, and has at least two elements */
 	(*stack) = (*stack)->next;

@@ -1,6 +1,6 @@
 #include "monty.h"
 
-/*stack_t *head = NULL;*/
+stack_t *head = NULL;
 
 /**
  * main - Entry point for the Monty program.
@@ -44,12 +44,11 @@ stack_t *create_node(int n)
  */
 void free_nodes(void)
 {
+	stack_t *tmp;
+
 	/* Check if the stack is empty */
 	if (head == NULL)
 		return;
-
-	/* Free all nodes in the stack */
-	stack_t *tmp;
 
 	while (head != NULL)
 	{

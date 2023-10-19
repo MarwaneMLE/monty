@@ -82,4 +82,4 @@ void more_error(int error_code, ...);
 void string_error(int error_code, ...);
 void rotr(stack_t **, unsigned int);
 
-#endif
+#endif /* MONTY_H */

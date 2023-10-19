@@ -1,5 +1,7 @@
 #include "monty.h"
 
+/*stack_t *tmp = *stack;*/
+
 /**
  * print_char - Prints the ASCII value as a character.
  * @stack: Pointer to a pointer pointing to the top node of the stack.
@@ -7,13 +9,15 @@
  */
 void print_char(stack_t **stack, unsigned int line_number)
 {
+	int ascii;
+	
 	if (stack == NULL || *stack == NULL)
 		string_error(11, line_number);
 
-	int ascii = (*stack)->n;
+	ascii = (*stack)->n;
 
 	if (ascii < 0 || ascii > 127)
-		string_err(10, line_number);
+		string_error(10, line_number);
 
 	printf("%c\n", ascii);
 }
@@ -25,16 +29,19 @@ void print_char(stack_t **stack, unsigned int line_number)
  */
 void print_str(stack_t **stack, __attribute__((unused))unsigned int ln)
 {
+	stack_t *tmp;
+	int ascii;
+
 	if (stack == NULL || *stack == NULL)
 	{
 		printf("\n");
 		return;
 	}
-	stack_t *tmp = *stack;
-
+	/*stack_t *tmp = *stack;*/
+	tmp = *stack;
 	while (tmp != NULL)
 	{
-		int ascii = tmp->n;
+		ascii = tmp->n;
 
 		if (ascii <= 0 || ascii > 127)
 			break;
@@ -51,11 +58,12 @@ void print_str(stack_t **stack, __attribute__((unused))unsigned int ln)
  */
 void rotl(stack_t **stack, __attribute__((unused))unsigned int ln)
 {
+	stack_t *tmp;
+
 	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
 		return;
 
-	stack_t *tmp = *stack;
-
+	tmp = *stack;
 	while (tmp->next != NULL)
 		tmp = tmp->next;
 
@@ -73,12 +81,15 @@ void rotl(stack_t **stack, __attribute__((unused))unsigned int ln)
  */
 void rotr(stack_t **stack, __attribute__((unused))unsigned int ln)
 {
+	stack_t *tmp;
+
 	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
 		return;
-	stack_t *tmp = *stack;
-
+	/*stack_t *tmp = *stack;*/
+	tmp = *stack;
 	while (tmp->next != NULL)
 		tmp = tmp->next;
+
 	tmp->next = *stack;
 	tmp->prev->next = NULL;
 	(*stack)->prev = tmp;

@@ -15,6 +15,8 @@
 void error(int error_code, ...)
 {
 	va_list args;
+	int l_num;
+	char *op;
 
 	va_start(args, error_code);
 	switch (error_code)
@@ -27,8 +29,8 @@ void error(int error_code, ...)
 			break;
 		case 3:
 		{
-			int l_num = va_arg(args, int);
-			char *op = va_arg(args, char *);
+			l_num = va_arg(args, int);
+			op = va_arg(args, char *);
 
 			fprintf(stderr, "L%d: unknown instruction %s\n", l_num, op);
 			break;
@@ -59,6 +61,8 @@ void error(int error_code, ...)
 void more_error(int error_code, ...)
 {
 	va_list args;
+	char *op;
+	int l_num;
 
 	va_start(args, error_code);
 	switch (error_code)
@@ -71,8 +75,8 @@ void more_error(int error_code, ...)
 			break;
 		case 8:
 		{
-			int l_num = va_arg(args, unsigned int);
-			char *op = va_arg(args, char *);
+			l_num = va_arg(args, unsigned int);
+			op = va_arg(args, char *);
 
 			fprintf(stderr, "L%d: can't %s, stack too short\n", l_num, op);
 			break;
@@ -97,9 +101,10 @@ void more_error(int error_code, ...)
 void string_error(int error_code, ...)
 {
 	va_list args;
+	int l_num;
 
 	va_start(args, error_code);
-	int l_num = va_arg(args, int);
+	l_num = va_arg(args, int);
 
 	switch (error_code)
 	{
