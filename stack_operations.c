@@ -5,7 +5,7 @@
  * @stack: Pointer to a pointer pointing to the top node of the stack.
  * @line_number: Integer representing the line number of the opcode.
  */
-void mul_nodes(stack_t **stack, unsigned int line_number)
+void mult_nodes(stack_t **stack, unsigned int line_number)
 {
 	int product;
 	(void) line_number;
@@ -25,7 +25,7 @@ void mul_nodes(stack_t **stack, unsigned int line_number)
  * @stack: Pointer to a pointer pointing to the top node of the stack.
  * @line_number: Integer representing the line number of the opcode.
  */
-void mod_nodes(stack_t **stack, unsigned int line_number)
+void mode_nodes(stack_t **stack, unsigned int line_number)
 {
 	int remainder;
 

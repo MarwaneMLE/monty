@@ -43,11 +43,11 @@ extern stack_t *head;
 typedef void (*op_func)(stack_t **, unsigned int);
 
 /*file operations*/
-void open_file(char *file_name);
-int parse_line(char *buffer, int line_number, int format);
-void read_file(FILE *);
+void open_files(char *file_name);
+int parse_lines(char *buffer, int line_number, int format);
+void read_files(FILE *);
 int len_chars(FILE *);
-void find_function(char *, char *, int, int);
+void find_functions(char *, char *, int, int);
 
 /*Stack operations*/
 stack_t *create_node(int n);
@@ -68,8 +68,8 @@ void swap_nodes(stack_t **, unsigned int);
 void add_nodes(stack_t **, unsigned int);
 void sub_nodes(stack_t **, unsigned int);
 void div_nodes(stack_t **, unsigned int);
-void mul_nodes(stack_t **, unsigned int);
-void mod_nodes(stack_t **, unsigned int);
+void mult_nodes(stack_t **, unsigned int);
+void mode_nodes(stack_t **, unsigned int);
 
 /*String operations*/
 void print_char(stack_t **, unsigned int);

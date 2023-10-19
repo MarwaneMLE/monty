@@ -4,14 +4,14 @@
 * open_file - Opens a file and starts reading its contents.
 * @file_name: The file's path to open.
 */
-void open_file(char *file_name)
+void open_files(char *file_name)
 {
 FILE *fd = fopen(file_name, "r");
 
 if (file_name == NULL || fd == NULL)
 error(2, file_name);
 
-read_file(fd);
+read_files(fd);
 fclose(fd);
 }
 
@@ -19,7 +19,7 @@ fclose(fd);
 * read_file - Reads and processes instructions from a file.
 * @fd: A pointer to the open file descriptor.
 */
-void read_file(FILE *fd)
+void read_files(FILE *fd)
 {
 int line_number, format = 0;
 char *buffer = NULL;
@@ -27,7 +27,7 @@ size_t len = 0;
 
 for (line_number = 1; getline(&buffer, &len, fd) != -1; line_number++)
 {
-format = parse_line(buffer, line_number, format);
+format = parse_lines(buffer, line_number, format);
 }
 free(buffer);
 }
@@ -39,7 +39,7 @@ free(buffer);
 * @format: Storage format. 0 for stack, 1 for queue.
 * Return: 0 if the format is stack, 1 if the format is queue.
 */
-int parse_line(char *buffer, int line_number, int format)
+int parse_lines(char *buffer, int line_number, int format)
 {
 char *opcode, *value;
 const char *delim = "\n ";
@@ -57,7 +57,7 @@ return (0);
 if (strcmp(opcode, "queue") == 0)
 return (1);
 
-find_function(opcode, value, line_number, format);
+find_functions(opcode, value, line_number, format);
 return (format);
 }
 
@@ -68,7 +68,7 @@ return (format);
 * @format: Storage format. 0 for stack, 1 for queue.
 * @ln: Line number.
 */
-void find_function(char *opcode, char *value, int ln, int format)
+void find_functions(char *opcode, char *value, int ln, int format)
 {
 int i;
 int flag;
@@ -83,8 +83,8 @@ instruction_t func_list[] = {
 {"add", add_nodes},
 {"sub", sub_nodes},
 {"div", div_nodes},
-{"mul", mul_nodes},
-{"mod", mod_nodes},
+{"mul", mult_nodes},
+{"mod", mode_nodes},
 {"pchar", print_char},
 {"pstr", print_str},
 {"rotl", rotl},
