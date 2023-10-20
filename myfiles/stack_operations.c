@@ -11,9 +11,6 @@ void mult_nodes(stack_t **stack, unsigned int line_number)
 	(void) line_number;
 
 	/* Check if the stack exists, is not empty, and has at least two elements */
-	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
-		more_error(8, line_number, "mult");
-
 	(*stack) = (*stack)->next;
 	product = (*stack)->n * (*stack)->prev->n;
 	(*stack)->n = product;
@@ -42,7 +39,7 @@ void mode_nodes(stack_t **stack, unsigned int line_number)
 
 	/* Move the stack pointer to the next element and calculate the remainder */
 	(*stack) = (*stack)->next;
-	remainder = (*stack)->n % (*stack)->prev->n; /* Calculate the remainder */
+	remainder = (*stack)->n % (*stack)->prev->n;
 	(*stack)->n = remainder;
 
 	/* Free the previous node and set the previous pointer to NULL */

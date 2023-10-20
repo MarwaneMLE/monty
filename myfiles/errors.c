@@ -100,24 +100,24 @@ void more_error(int error_code, ...)
  */
 void string_error(int error_code, ...)
 {
-        va_list args;
-        int l_num;
+	va_list args;
+	int l_num;
 
-        va_start(args, error_code);
-        l_num = va_arg(args, int);
+	va_start(args, error_code);
+	l_num = va_arg(args, int);
 
-        switch (error_code)
-        {
-                case 10:
-                        fprintf(stderr, "L%d: can't pchar, value out of range\n", l_num);
-                        break;
-                case 11:
-                        fprintf(stderr, "L%d: can't pchar, stack empty\n", l_num);
-                        break;
-                default:
-                        break;
-        }
-        va_end(args);
-        free_nodes();
+	switch (error_code)
+	{
+		case 10:
+			fprintf(stderr, "L%d: can't pchar, value out of range\n", l_num);
+			break;
+		case 11:
+			fprintf(stderr, "L%d: can't pchar, stack empty\n", l_num);
+			break;
+		default:
+			break;
+	}
+	va_end(args);
+	free_nodes();
 	exit(EXIT_FAILURE);
 }

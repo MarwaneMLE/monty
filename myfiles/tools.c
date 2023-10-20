@@ -4,35 +4,31 @@
 * open_file - Opens a file and starts reading its contents.
 * @file_name: The file's path to open.
 */
-void open_files(char *file_name) {
-	FILE *fd;
+void open_files(char *file_name)
+{
+FILE *fd = fopen(file_name, "r");
 
-	/* Attempt to open the Monty file */
-	fd = fopen(file_name, "r");
-	if (fd == NULL) {
-		fprintf(stderr, "Error: Can't open file %s\n", file_name);
-		exit(EXIT_FAILURE);
-	}
+if (file_name == NULL || fd == NULL)
+error(2, file_name);
 
-	read_files(fd);
-	fclose(fd);
+read_files(fd);
+fclose(fd);
 }
 
 /**
 * read_file - Reads and processes instructions from a file.
 * @fd: A pointer to the open file descriptor.
 */
-void read_files(FILE *fd) {
-int line_number = 1;
-int format = 0;
+void read_files(FILE *fd)
+{
+int line_number, format = 0;
 char *buffer = NULL;
 size_t len = 0;
 
-while (getline(&buffer, &len, fd) != -1) {
+for (line_number = 1; getline(&buffer, &len, fd) != -1; line_number++)
+{
 format = parse_lines(buffer, line_number, format);
-line_number++;
 }
-
 free(buffer);
 }
 

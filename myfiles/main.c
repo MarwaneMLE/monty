@@ -29,20 +29,36 @@ int main(int argc, char *argv[])
 stack_t *create_node(int n)
 {
 	/* Allocate memory for a new stack node */
-	stack_t *new_node = malloc(sizeof(stack_t));
+	stack_t *node = malloc(sizeof(stack_t));
 
-	if (new_node == NULL)
+	if (node == NULL)
 		error(4);
-	new_node->n = n;
-	new_node->next = NULL;
-	new_node->prev = NULL;
-
-	return (new_node);
+	node->next = NULL;
+	node->prev = NULL;
+	node->n = n;
+	return (node);
 }
 
 /**
  * free_nodes - Frees all nodes in the stack.
  */
+/*
+void free_nodes(void)
+{
+	stack_t *tmp;
+
+	Check if the stack is empty
+	if (head == NULL)
+		return;
+
+	while (head != NULL)
+	{
+		tmp = head;
+		head = head->next;
+		free(tmp);
+	}
+}
+*/
 
 void free_nodes(void)
 {
@@ -67,6 +83,30 @@ void free_nodes(void)
  * @new_node: Pointer to the new node to be added.
  * @ln: Line number of the opcode (unused).
  */
+/*void add_to_queue(stack_t **new_node, __attribute__((unused)) unsigned int ln)
+{*/
+	/* Check for valid input */
+/*	stack_t *tmp;
+
+	if (new_node == NULL || *new_node == NULL)
+		exit(EXIT_FAILURE);
+
+	if (head == NULL)
+	{*/
+		/* If the queue is empty, set the new node as the head */
+	/*	head = *new_node;
+		return;
+	}
+
+	tmp = head;
+	while (tmp->next != NULL)
+		tmp = tmp->next;
+*/
+	/* Add the new node to the end of the queue */
+/*	tmp->next = *new_node;
+	(*new_node)->prev = tmp;
+}*/
+
 void add_to_queue(stack_t **new_node, __attribute__((unused)) unsigned int ln)
 {
 	/* Check for valid input */

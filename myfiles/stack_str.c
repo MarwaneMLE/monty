@@ -12,19 +12,14 @@ void print_char(stack_t **stack, unsigned int line_number)
 	int ascii;
 	
 	if (stack == NULL || *stack == NULL)
-	{
-		string_error(11, line_number);/* Error: Stack is empty */
-		return;
-	}
+		string_error(11, line_number);
+
 	ascii = (*stack)->n;
 
 	if (ascii < 0 || ascii > 127)
-	{
-		string_error(10, line_number);/* Error: ASCII value out of range */
-		return;
-	}
+		string_error(10, line_number);
 
-	printf("%c\n", ascii); /*Print the character corresponding to the ASCII value*/
+	printf("%c\n", ascii);
 }
 
 /**
@@ -42,6 +37,7 @@ void print_str(stack_t **stack, __attribute__((unused))unsigned int ln)
 		printf("\n");
 		return;
 	}
+	/*stack_t *tmp = *stack;*/
 	tmp = *stack;
 	while (tmp != NULL)
 	{
