@@ -5,28 +5,8 @@
  * @new_node: Pointer to the new node.
  * @ln: Line number of the opcode (unused).
  */
-/*
 void add_to_stack(stack_t **new_node, __attribute__((unused)) unsigned int ln)
 {
-	stack_t *tmp;
-*/
-	/* Check for valid input 
-	if (new_node == NULL || *new_node == NULL)
-		exit(EXIT_FAILURE);
-
-	if (head == NULL)
-	{
-		head = *new_node;
-		return;
-	}
-
-	tmp = head;
-	head = *new_node;
-	head->next = tmp;
-	tmp->prev = head;
-}*/
-
-void add_to_stack(stack_t **new_node, __attribute__((unused)) unsigned int ln) {
 	if (new_node == NULL || *new_node == NULL) {
 		fprintf(stderr, "Error: Invalid input for add_to_stack\n");
 		exit(EXIT_FAILURE);
